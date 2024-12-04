@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./1.gif";
+import React, { useState } from "react";
+import { Button, Container, TextField, Typography } from "@mui/material";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  const [a, setA] = useState("5");
+  const [b, setB] = useState("3");
+  const [result, setResult] = useState("");
+  // const [resultat, setResultat] = useState("");
+
+  const add_old = () => {
+    setResult(Number(a) + Number(b));
+  };
+
+  const add = async () => {
+    const antwort = await axios.get("http://127.0.0.1:8000/add", {
+      params: { a: parseInt(a), b: parseInt(b) },
+    });
+
+    setResult(antwort.data.resultat);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+      <Container>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <TextField
+          label="erste Zahl"
+          value={a}
+          onChange={(e) => setA(e.target.value)}
+          type="number"
+          fullWidth
+        />
+        <TextField
+          label="zweite Zahl"
+          value={b}
+          onChange={(e) => setB(e.target.value)}
+          type="number"
+          fullWidth
+        />
+        <Button variant="contained" color="primary" onClick={add}>
+          addiere!!!
+        </Button>
+        <br />
+        <br /> {result}
+      </Container>
+    </>
   );
 }
 
