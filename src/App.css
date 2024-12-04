@@ -1,22 +1,23 @@
 .App {
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    position: relative;
-    width: 220px; /* Explicitly set GIF size */
-    height: 158px;
-    animation: App-logo-quadrants 3s linear infinite;
+    position: absolute;
+    width: 40%;
+    height: auto;
+    z-index: -1;
+    animation: App-logo-quadrants 3.5s linear infinite;
   }
 }
 
 .App-header {
   background-color: #282c34;
-  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -55,19 +56,42 @@
 
 @keyframes App-logo-quadrants {
   0% {
-    transform: translate(calc(-50vw - 220px), calc(-50vh - 158px)) rotate(0deg); /* Top-left */
+    transform: translate(calc(0vw), calc(0vh)) rotate(0deg);
+  }
+  10% {
+    transform: translate(calc(10vw), calc(5vh)) rotate(5deg);
+  }
+  20% {
+    transform: translate(calc(20vw), calc(10vh)) rotate(15deg);
   }
   25% {
-    transform: translate(calc(50vw + 220px), calc(-50vh - 158px)) rotate(90deg); /* Top-right */
+    transform: translate(calc(60vw), calc(0vh)) rotate(90deg);
+  }
+  35% {
+    transform: translate(calc(65vw), calc(15vh)) rotate(100deg);
+  }
+  40% {
+    transform: translate(calc(70vw), calc(5vh)) rotate(110deg);
   }
   50% {
-    transform: translate(calc(50vw + 220px), calc(50vh - 158px)) rotate(180deg); /* Bottom-right */
+    transform: translate(calc(75vw), calc(70vh)) rotate(180deg);
+  }
+  60% {
+    transform: translate(calc(70vw), calc(65vh)) rotate(190deg);
+  }
+  65% {
+    transform: translate(calc(65vw), calc(55vh)) rotate(195deg);
   }
   75% {
-    transform: translate(calc(-50vw + 220px), calc(50vh - 158px)) rotate(270deg); /* Bottom-left */
+    transform: translate(calc(0vw), calc(65vh)) rotate(270deg);
+  }
+  80% {
+    transform: translate(calc(5vw), calc(55vh)) rotate(280deg);
+  }
+  90% {
+    transform: translate(calc(10vw), calc(65vh)) rotate(290deg);
   }
   100% {
-    transform: translate(calc(-50vw + 220px), calc(-50vh + 158px))
-      rotate(360deg); /* Back to Top-left */
+    transform: translate(calc(0vw), calc(0vh)) rotate(360deg);
   }
 }
